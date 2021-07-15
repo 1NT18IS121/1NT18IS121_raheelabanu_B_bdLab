@@ -14,16 +14,16 @@
 
 2. Demonstrate the Map-Reduce aggregate function on this dataset.
 
- 	var mapFunc = function(){emit(this.Genere, this["IMDB rating"]);};
-	
-	var reducerFuc = function(genere,rating){return Array.avg(rating);};
-	
-	db.movies.mapReduce(mapFunc,reducerFunc, {out: "Output"});
+		var mapFunc = function(){emit(this.Genere, this["IMDB rating"]);};
+
+		var reducerFuc = function(genere,rating){return Array.avg(rating);};
+
+		db.movies.mapReduce(mapFunc,reducerFunc, {out: "Output"});
   
 3. Count the number of Movies which belong to the thriller category and find out the total number of positive reviews in that category. 
 
-	db.movies.aggregate([[$match:{"Genere":"Thriller"}},{$group:{_id:"$Genere",count:{$sum:1},value:{$sum:"$Number of Positive Feedbacks"}}}]).pretty()
+		db.movies.aggregate([[$match:{"Genere":"Thriller"}},{$group:{_id:"$Genere",count:{$sum:1},value:{$sum:"$Number of Positive Feedbacks"}}}]).pretty()
 
 4. Group all the records by genre and find out the total number of positive feedbacks by genre.
 	
-	db.movies.aggregate([{$group:{_id:"$Genere",count:{$sum:1},Total number of Positive Feedbacks:{$sum:"Number of Positive Feedbacks"}}}]).pretty()
+		db.movies.aggregate([{$group:{_id:"$Genere",count:{$sum:1},Total number of Positive Feedbacks:{$sum:"Number of Positive Feedbacks"}}}]).pretty()
