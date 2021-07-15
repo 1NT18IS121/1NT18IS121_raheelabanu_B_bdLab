@@ -1,16 +1,11 @@
 1. Demonstrate the usage of $match, $group, aggregate pipelines.
 
-  (a) $match : It selects the recods that matches the specified condition
-  
-  db.movies.aggregate([{ $match : { Genere : "Animation" }}]).pretty()
-  
-  (b) $group : It generally groups the input based on a specified id.
-  
-  db.movies.aggregate([{ $group : (_id: "$Genere" , count: {$sum:1}}}])
-  
-  (c) aggregate pipelines :
-  
-  db.movies.aggregate([{$match:{"Number of Positive Feedbacks":{$gt:4000}}},{$group:{_id:"$Genere",count:{$sum:1}}}]).pretty()
+(a) $match : It selects the recods that matches the specified condition
+db.movies.aggregate([{ $match : { Genere : "Animation" }}]).pretty()
+(b) $group : It generally groups the input based on a specified id.
+db.movies.aggregate([{ $group : (_id: "$Genere" , count: {$sum:1}}}])
+(c) aggregate pipelines :
+db.movies.aggregate([{$match:{"Number of Positive Feedbacks":{$gt:4000}}},{$group:{_id:"$Genere",count:{$sum:1}}}]).pretty()
 
 2. Demonstrate the Map-Reduce aggregate function on this dataset.
 
