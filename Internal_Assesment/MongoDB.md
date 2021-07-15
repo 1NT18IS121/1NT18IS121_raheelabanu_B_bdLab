@@ -14,11 +14,10 @@ db.movies.aggregate([{$match:{"Number of Positive Feedbacks":{$gt:4000}}},{$grou
   db.movies.mapReduce(mapFunc,reducerFunc, {out: "Output"});
   
 3. Count the number of Movies which belong to the thriller category and find out the total number of positive reviews in that category. 
-
   db.movies.aggregate([[$match:{"Genere":"Thriller"}},{$group:{_id:"$Genere",count:{$sum:1},value:{$sum:"$Number of Positive Feedbacks"}}}]).pretty()
 
 4. Group all the records by genre and find out the total number of positive feedbacks by genre.
 
-   db.movies.aggregate([{$group:{ id:"$Genere",count:{$sum:1},Total number of Positive Feedbacks:{$sum:"Number of Positive Feedbacks"}}}]).pretty()
+  db.movies.aggregate([{$group:{ id:"$Genere",count:{$sum:1},Total number of Positive Feedbacks:{$sum:"Number of Positive Feedbacks"}}}]).pretty()
 
 
