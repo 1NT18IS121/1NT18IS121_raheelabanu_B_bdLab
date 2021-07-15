@@ -15,7 +15,9 @@
 2. Demonstrate the Map-Reduce aggregate function on this dataset.
 
  	var mapFunc = function(){emit(this.Genere, this["IMDB rating"]);};
+	
 	var reducerFuc = function(genere,rating){return Array.avg(rating);};
+	
 	db.movies.mapReduce(mapFunc,reducerFunc, {out: "Output"});
   
 3. Count the number of Movies which belong to the thriller category and find out the total number of positive reviews in that category. 
